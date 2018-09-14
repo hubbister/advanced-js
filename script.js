@@ -175,7 +175,7 @@ interviewQuestion('teacher')('Marco');
 /////////////////////////////
 // Lecture: IIFE
 
-
+/*
 function game() {
     var score = Math.random() * 10;
     console.log(score >= 5);
@@ -192,11 +192,11 @@ game();
     var score = Math.random() * 10;
     console.log(score >= 5 -goodLuck);
 })(5);
-
+*/
 
 /////////////////////////////
 // Lecture: Closures
-
+/*
 function retirement(retirementAge) {
     var a = 'years left until retirement';
 
@@ -208,12 +208,52 @@ function retirement(retirementAge) {
 
 
 var retirementUS = retirement(66);
+var retirementDE = retirement(65);
+var retirementIC = retirement(67);
 
-retirementUS(1984);
-retirement(66)(1984);
+retirementUS(1990);
+retirementDE(1990);
+retirementIC(1990);
+
+//retirement(66)(1984);
+
+/*
+function interviewQuestion(job) {
+    if (job === 'designer') {
+        return function(name) {
+            console.log(name + ', can you please explain what UX design is this?');
+        }
+    } else if (job === 'teacher') {
+        return function(name) {
+            console.log('wath subject do you teach ' + name + '?');
+        }
+    } else {
+        return function (name) {
+            console.log('Hello' + name + ',wath do you do?');
+        }
+    }
+}*/
+/*
+function interviewQuestion(job) {
+    return function(name) {
+        if (job === 'designer') {
+             console.log(name + ', can you please explain what UX design is this?');
+            }
+        else if (job === 'teacher') {
+            console.log('wath subject do you teach ' + name + '?');
+            }
+        else {
+            console.log('Hello' + name + ',wath do you do?');
+        }
+        
+    }
+}
+
+interviewQuestion('designer')('lorenzo');*/
 
 /////////////////////////////
 // Lecture: Bind, call and apply
+
 /*
 var john = {
     name: 'John',
@@ -221,46 +261,61 @@ var john = {
     job: 'teacher',
     presentation: function(style, timeOfDay) {
         if (style === 'formal') {
-            console.log('Good ' + timeOfDay + ', Ladies and gentlemen! I\'m ' +  this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old.');
+            console.log('Good ' + timeOfDay + ', Ladies and gentlemen I\'m ' + this.name + 'I\'m a ' + this.job + ' and I\'m '+ this.age + ' years old');
         } else if (style === 'friendly') {
-            console.log('Hey! What\'s up? I\'m ' +  this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old. Have a nice ' + timeOfDay + '.');
+            console.log('Hi fucking bastards I\'m ' + this.name + 'I\'m a ' + this.job + 'and I\'m ' + this.age + 'go fuck yoirself at ' + timeOfDay);
         }
     }
+
 };
+
+
 var emily = {
-    name: 'Emily',
+    name: 'emily',
     age: 35,
     job: 'designer'
 };
-john.presentation('formal', 'morning');
+john.presentation('formal','morning');
 john.presentation.call(emily, 'friendly', 'afternoon');
-//john.presentation.apply(emily, ['friendly', 'afternoon']);
-var johnFriendly = john.presentation.bind(john, 'friendly');
-johnFriendly('morning');
-johnFriendly('night');
-var emilyFormal = john.presentation.bind(emily, 'formal');
-emilyFormal('afternoon');
-// Another cool example
+//john.presentation.apply(emily, ['formal', 'evening']);
+
+
+var johnfriendly = john.presentation.bind(john, 'friendly');
+
+johnfriendly('morning');
+johnfriendly('night');
+
+var emilyformal = john.presentation.bind(emily, 'formal');
+emilyformal('afternoon');
+
+
+*/
+
 var years = [1990, 1965, 1937, 2005, 1998];
-function arrayCalc(arr, fn) {
+
+function arrayCalc(arr, fn){
+
     var arrRes = [];
-    for (var i = 0; i < arr.length; i++) {
+    
+    for (var i = 0; i < arr.length; i++){
         arrRes.push(fn(arr[i]));
     }
     return arrRes;
 }
+
 function calculateAge(el) {
     return 2016 - el;
 }
+
+
 function isFullAge(limit, el) {
     return el >= limit;
 }
+
+
 var ages = arrayCalc(years, calculateAge);
 var fullJapan = arrayCalc(ages, isFullAge.bind(this, 20));
-console.log(ages);
 console.log(fullJapan);
-*/
-
 
 
 
